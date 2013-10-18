@@ -39,8 +39,10 @@
 
 #ifdef DEBUG
 #define D(x...) PRINT(x...)
+#define LIBRPC_DEBUG(x...) do { SLOGD(x); } while(0)
 #else
 #define D(x...) do { } while(0)
+#define LIBRPC_DEBUG(x...) do { } while(0)
 #endif
 
 #ifdef VERBOSE
@@ -48,10 +50,6 @@
 #else
 #define V(x...) do { } while(0)
 #endif
-
-#define LIBRPC_DEBUG(x...) do { \
-        SLOGD(x);               \
-    } while(0)
 
 #define E(x...) do {                                        \
         fprintf(stderr, "%s(%d) ", __FUNCTION__, __LINE__); \
